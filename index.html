@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ankur Tiwari | Backend Developer & AI Enthusiast</title>
+  <meta name="description" content="Portfolio of Ankur Tiwari — B.Tech CSE student specializing in Python backend development, AI/LLM integration, and building real-world automation systems.">
+  <meta name="keywords" content="Ankur Tiwari, Backend Developer, AI, Python, Flask, Portfolio">
+  <meta name="author" content="Ankur Tiwari">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ankur Tiwari | Backend Developer & AI Enthusiast">
+  <meta property="og:description" content="B.Tech CSE student building AI-integrated backend systems — from automated data pipelines to LLM-powered chatbots.">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Cursor Glow Effect -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#hero" class="nav-logo" id="navLogo">Ankur<span>.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" data-nav>About</a></li>
+        <li><a href="#skills" data-nav>Skills</a></li>
+        <li><a href="#projects" data-nav>Projects</a></li>
+        <li><a href="#education" data-nav>Education</a></li>
+        <li><a href="#competitive" data-nav>CP</a></li>
+        <li><a href="#contact" data-nav>Contact</a></li>
+      </ul>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <!-- Sun icon (shown in dark mode) -->
+          <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+          </svg>
+          <!-- Moon icon (shown in light mode) -->
+          <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="display:none;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+          </svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile nav overlay -->
+  <div class="nav-overlay" id="navOverlay">
+    <ul class="nav-links">
+      <li><a href="#about" data-nav-mobile>About</a></li>
+      <li><a href="#skills" data-nav-mobile>Skills</a></li>
+      <li><a href="#projects" data-nav-mobile>Projects</a></li>
+      <li><a href="#education" data-nav-mobile>Education</a></li>
+      <li><a href="#competitive" data-nav-mobile>CP</a></li>
+      <li><a href="#contact" data-nav-mobile>Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero" id="hero">
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero-orb hero-orb--1"></div>
+    <div class="hero-orb hero-orb--2"></div>
+    <div class="hero-orb hero-orb--3"></div>
+
+    <div class="hero-content">
+      <p class="hero-greeting">
+        <span class="wave">👋</span> Hey there, I'm
+      </p>
+      <h1 class="hero-name">
+        <span class="gradient-text">Ankur Tiwari</span>
+      </h1>
+      <div class="hero-title-wrapper">
+        <p class="hero-title">
+          <span id="typedText"></span><span class="typed-cursor"></span>
+        </p>
+      </div>
+      <p class="hero-description">
+        Building AI-integrated backend systems — from automated data pipelines to LLM-powered chatbots. I ship fast, debug live, and thrive in ambiguity.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary" id="ctaProjects">
+          View Projects
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-outline" id="ctaContact">
+          Get In Touch
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </a>
+      </div>
+      <div class="hero-social">
+        <a href="https://github.com/ankurtwr" target="_blank" rel="noopener noreferrer" aria-label="GitHub" id="socialGithub">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/ankur-twr" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" id="socialLinkedin">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://leetcode.com/u/ankur_twr" target="_blank" rel="noopener noreferrer" aria-label="LeetCode" id="socialLeetcode">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
+        </a>
+        <a href="mailto:ankurtwr1979@gmail.com" aria-label="Email" id="socialEmail">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="mouse"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ========== ABOUT SECTION ========== -->
+  <section id="about">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">About Me</p>
+        <h2 class="section-title">Who I Am</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I'm a <strong>Computer Science Engineering</strong> student in my final year at <strong>IIST Indore</strong>, with a deep focus on building things that actually work in the real world.
+          </p>
+          <p>
+            My sweet spot is the intersection of <span class="about-highlight">Python</span> backend development and <span class="about-highlight">AI/LLM integration</span> — I've built everything from OCR-powered data pipelines to conversational chatbots using the Google Gemini API.
+          </p>
+          <p>
+            I'm comfortable with <strong>REST APIs</strong>, debugging live systems, and figuring things out when requirements are ambiguous. I bring a self-starter, <strong>ship-fast mindset</strong> to every project — whether it's a solo build or a team sprint.
+          </p>
+          <p>
+            When I'm not coding, you'll find me grinding <span class="about-highlight">LeetCode</span> problems or exploring the latest in AI and automation.
+          </p>
+        </div>
+        <div class="about-stats reveal reveal-stagger">
+          <div class="stat-card">
+            <div class="stat-number" id="lc-about-count" data-count="149">0</div>
+            <div class="stat-label">LeetCode Problems</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-count="2" data-suffix="+">0</div>
+            <div class="stat-label">Projects Built</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-count="7.9" data-decimal="true">0</div>
+            <div class="stat-label">CGPA</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-count="2027">0</div>
+            <div class="stat-label">Graduating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ========== SKILLS SECTION ========== -->
+  <section id="skills">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Technical Arsenal</p>
+        <h2 class="section-title">Skills & Technologies</h2>
+        <p class="section-subtitle">Technologies I work with to build robust, scalable backend systems and AI-powered applications.</p>
+      </div>
+      <div class="skills-grid" style="margin-top: 48px;">
+        <div class="skill-category reveal">
+          <div class="skill-category-icon">💻</div>
+          <h3 class="skill-category-title">Programming Languages</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">C</span>
+            <span class="skill-tag">C++</span>
+          </div>
+        </div>
+        <div class="skill-category reveal">
+          <div class="skill-category-icon">🤖</div>
+          <h3 class="skill-category-title">AI / LLM Integration</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Google Gemini API</span>
+            <span class="skill-tag">Prompt Engineering</span>
+            <span class="skill-tag">NLP Query Handling</span>
+            <span class="skill-tag">Conversational Agents</span>
+          </div>
+        </div>
+        <div class="skill-category reveal">
+          <div class="skill-category-icon">⚡</div>
+          <h3 class="skill-category-title">Backend & APIs</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Flask</span>
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">REST APIs</span>
+            <span class="skill-tag">Flask-SQLAlchemy</span>
+          </div>
+        </div>
+        <div class="skill-category reveal">
+          <div class="skill-category-icon">🗄️</div>
+          <h3 class="skill-category-title">Databases</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">SQLite</span>
+            <span class="skill-tag">ChromaDB</span>
+          </div>
+        </div>
+        <div class="skill-category reveal">
+          <div class="skill-category-icon">🧩</div>
+          <h3 class="skill-category-title">DSA & Problem Solving</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Arrays</span>
+            <span class="skill-tag">Strings</span>
+            <span class="skill-tag">Hash Tables</span>
+            <span class="skill-tag">Dynamic Programming</span>
+            <span class="skill-tag">Greedy</span>
+            <span class="skill-tag">Binary Search</span>
+            <span class="skill-tag">Two Pointers</span>
+            <span class="skill-tag">Tries</span>
+          </div>
+        </div>
+        <div class="skill-category reveal">
+          <div class="skill-category-icon">🛠️</div>
+          <h3 class="skill-category-title">Tools & DevOps</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">Postman</span>
+            <span class="skill-tag">VS Code</span>
+            <span class="skill-tag">Google Colab</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ========== PROJECTS SECTION ========== -->
+  <section id="projects">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Featured Work</p>
+        <h2 class="section-title">Projects</h2>
+        <p class="section-subtitle">Real-world applications I've designed, built, and shipped — end to end.</p>
+      </div>
+      <div class="projects-grid" style="margin-top: 48px;">
+
+        <!-- Project 1: HealthHive -->
+        <div class="project-card reveal" id="projectHealthhive">
+          <div class="project-header">
+            <div class="project-icon">🏥</div>
+            <div class="project-links">
+              <a href="https://github.com/ankurtwr/HealthHive" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub Repository">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-name">HealthHive</h3>
+          <p class="project-subtitle">Intelligent Generic Medicine Recommender</p>
+          <p class="project-description">
+            A full-stack AI-powered platform that makes medicine data accessible through natural conversation, automated OCR pipelines, and real-time price comparison across major e-pharmacies.
+          </p>
+          <ul class="project-features">
+            <li>Integrated Google Gemini API chatbot for natural-language medicine queries with custom prompt engineering</li>
+            <li>Built an AI medical report analyser that parses uploaded reports and surfaces key findings in plain language</li>
+            <li>Automated data pipeline: ingests medicine strip images → OCR extraction (OpenCV + Tesseract) → auto-lookup workflow</li>
+            <li>Real-time price scraping across Tata 1mg, PharmEasy & Netmeds with local caching for reliability</li>
+            <li>Modular multi-component backend with REST-style internal APIs and MySQL schema migrations</li>
+          </ul>
+          <div class="project-tech">
+            <span>Python</span>
+            <span>Flask</span>
+            <span>MySQL</span>
+            <span>OpenCV</span>
+            <span>Tesseract</span>
+            <span>Gemini API</span>
+          </div>
+        </div>
+
+        <!-- Project 2: Snip -->
+        <div class="project-card reveal" id="projectSnip">
+          <div class="project-header">
+            <div class="project-icon">🔗</div>
+            <div class="project-links">
+              <a href="https://github.com/ankurtwr/url_shortener" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub Repository">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-name">Snip</h3>
+          <p class="project-subtitle">URL Shortener Service</p>
+          <p class="project-description">
+            A clean, fast URL shortening service with custom aliases, configurable expiry, and an analytics dashboard — built end-to-end with Flask and MySQL.
+          </p>
+          <ul class="project-features">
+            <li>Converts long URLs into short, shareable links with instant redirection</li>
+            <li>Custom short-name aliases and flexible expiry settings (1 hour to 90 days)</li>
+            <li>Analytics dashboard with total clicks, link status, creation & expiry dates</li>
+          </ul>
+          <div class="project-tech">
+            <span>Python</span>
+            <span>Flask</span>
+            <span>MySQL</span>
+            <span>Flask-SQLAlchemy</span>
+            <span>REST API</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ========== EDUCATION SECTION ========== -->
+  <section id="education">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Background</p>
+        <h2 class="section-title">Education</h2>
+      </div>
+      <div class="education-timeline" style="margin-top: 48px;">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-date">Sep 2023 — Nov 2027</div>
+            <h3 class="timeline-title">Bachelor of Technology — CSE</h3>
+            <p class="timeline-institution">Indore Institute of Science and Technology, Indore, M.P.</p>
+            <p class="timeline-detail">Computer Science & Engineering</p>
+            <span class="timeline-badge">📊 CGPA: 7.9</span>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-date">Completed 2022</div>
+            <h3 class="timeline-title">Higher Secondary (Class XII)</h3>
+            <p class="timeline-institution">Central Academy School, Rewa, M.P.</p>
+            <span class="timeline-badge">📊 Score: 80%</span>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-date">Completed 2020</div>
+            <h3 class="timeline-title">High School (Class X)</h3>
+            <p class="timeline-institution">Central Academy School, Rewa, M.P.</p>
+            <span class="timeline-badge">📊 Score: 87%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ========== COMPETITIVE PROGRAMMING SECTION ========== -->
+  <section id="competitive">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Problem Solving</p>
+        <h2 class="section-title">Competitive Programming</h2>
+      </div>
+      <div class="cp-content" style="margin-top: 48px;">
+        <div class="cp-stats-card reveal">
+          <p class="cp-platform"><a href="https://leetcode.com/u/ankur_twr/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">leetcode.com/u/ankur_twr/</a></p>
+          <div class="cp-total" id="lc-cp-count" data-count="149">0</div>
+          <p class="cp-total-label">Problems Solved</p>
+          <div class="cp-langs" id="lc-langs-container">
+            <span class="cp-lang">Python3 — 96</span>
+            <span class="cp-lang">C++ — 8</span>
+            <span class="cp-lang">MySQL — 7</span>
+          </div>
+        </div>
+        <div class="cp-topics reveal reveal-stagger" id="cpTopics">
+          <div class="cp-topic">
+            <span class="cp-topic-name">Array</span>
+            <div class="cp-topic-bar"><div class="cp-topic-fill" data-width="100"></div></div>
+            <span class="cp-topic-count">58</span>
+          </div>
+          <div class="cp-topic">
+            <span class="cp-topic-name">Two Pointers</span>
+            <div class="cp-topic-bar"><div class="cp-topic-fill" data-width="53"></div></div>
+            <span class="cp-topic-count">31</span>
+          </div>
+          <div class="cp-topic">
+            <span class="cp-topic-name">String</span>
+            <div class="cp-topic-bar"><div class="cp-topic-fill" data-width="47"></div></div>
+            <span class="cp-topic-count">27</span>
+          </div>
+          <div class="cp-topic">
+            <span class="cp-topic-name">Math</span>
+            <div class="cp-topic-bar"><div class="cp-topic-fill" data-width="45"></div></div>
+            <span class="cp-topic-count">26</span>
+          </div>
+          <div class="cp-topic">
+            <span class="cp-topic-name">Binary Search</span>
+            <div class="cp-topic-bar"><div class="cp-topic-fill" data-width="40"></div></div>
+            <span class="cp-topic-count">23</span>
+          </div>
+          <div class="cp-topic">
+            <span class="cp-topic-name">Hash Table</span>
+            <div class="cp-topic-bar"><div class="cp-topic-fill" data-width="33"></div></div>
+            <span class="cp-topic-count">19</span>
+          </div>
+          <div class="cp-topic">
+            <span class="cp-topic-name">Dynamic Prog.</span>
+            <div class="cp-topic-bar"><div class="cp-topic-fill" data-width="17"></div></div>
+            <span class="cp-topic-count">10</span>
+          </div>
+          <div class="cp-topic">
+            <span class="cp-topic-name">Divide & Conquer</span>
+            <div class="cp-topic-bar"><div class="cp-topic-fill" data-width="9"></div></div>
+            <span class="cp-topic-count">5</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ========== ACHIEVEMENTS SECTION ========== -->
+  <section id="achievements">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Beyond Code</p>
+        <h2 class="section-title">Achievements & Activities</h2>
+      </div>
+      <div class="achievements-grid" style="margin-top: 48px;">
+        <div class="achievement-card reveal">
+          <div class="achievement-icon">🏆</div>
+          <h3 class="achievement-title">Quiz Champion</h3>
+          <p class="achievement-desc">Secured 1st position in college-level Quiz Competition.</p>
+        </div>
+        <div class="achievement-card reveal">
+          <div class="achievement-icon">🏛️</div>
+          <h3 class="achievement-title">MOP Winner</h3>
+          <p class="achievement-desc">Won the Model of Parliament event organized by the Lexicon Club — bill passed as part of a team.</p>
+        </div>
+        <div class="achievement-card reveal">
+          <div class="achievement-icon">🚀</div>
+          <h3 class="achievement-title">Hackathon Enthusiast</h3>
+          <p class="achievement-desc">Actively participated in multiple college-level hackathons, building projects under pressure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ========== CONTACT SECTION ========== -->
+  <section id="contact">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Let's Connect</p>
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Have a project idea, want to collaborate, or just want to say hi? I'd love to hear from you.</p>
+      </div>
+      <div class="contact-grid" style="margin-top: 48px;">
+        <div class="contact-info reveal reveal-stagger">
+          <a href="mailto:ankurtwr1979@gmail.com" class="contact-card" id="contactEmail">
+            <div class="contact-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <div>
+              <p class="contact-card-label">Email</p>
+              <p class="contact-card-value">ankurtwr1979@gmail.com</p>
+            </div>
+          </a>
+          <a href="tel:+918236868036" class="contact-card" id="contactPhone">
+            <div class="contact-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            </div>
+            <div>
+              <p class="contact-card-label">Phone</p>
+              <p class="contact-card-value">+91 8236868036</p>
+            </div>
+          </a>
+          <div class="contact-card" id="contactLocation">
+            <div class="contact-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <p class="contact-card-label">Location</p>
+              <p class="contact-card-value">Indore, Madhya Pradesh</p>
+            </div>
+          </div>
+          <a href="https://linkedin.com/in/ankur-twr" target="_blank" rel="noopener noreferrer" class="contact-card" id="contactLinkedin">
+            <div class="contact-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </div>
+            <div>
+              <p class="contact-card-label">LinkedIn</p>
+              <p class="contact-card-value">linkedin.com/in/ankur-twr</p>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p class="footer-text">
+          Designed & Built by <span>Ankur Tiwari</span> &copy; 2026
+        </p>
+        <div class="footer-links">
+          <a href="https://github.com/ankurtwr" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://linkedin.com/in/ankur-twr" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://leetcode.com/u/ankur_twr" target="_blank" rel="noopener noreferrer">LeetCode</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
