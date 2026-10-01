@@ -1,6 +1,6 @@
 """
 Ankur Tiwari — Portfolio Backend
-FastAPI + SQLAlchemy + SQLite
+FastAPI
 """
 
 from fastapi import FastAPI, HTTPException
@@ -50,44 +50,38 @@ import json
 # --- LeetCode Stats Proxy ---
 @app.get("/api/leetcode")
 def get_leetcode_stats():
-    """Fetches detailed LeetCode stats (including topics/languages) via GraphQL."""
-    url = 'https://leetcode.com/graphql'
-    query = '''
-    query getUserProfile($username: String!) {
-      matchedUser(username: $username) {
-        submitStats {
-          acSubmissionNum {
-            difficulty
-            count
-          }
-        }
-        languageProblemCount {
-          languageName
-          problemsSolved
-        }
-        tagProblemCounts {
-          advanced {
-            tagName
-            problemsSolved
-          }
-          intermediate {
-            tagName
-            problemsSolved
-          }
-          fundamental {
-            tagName
-            problemsSolved
-          }
-        }
-      }
-    }
-    '''
-    data = json.dumps({'query': query, 'variables': {'username': 'ankur_twr'}}).encode('utf-8')
-    req = urllib.request.Request(url, data=data, headers={'Content-Type': 'application/json', 'User-Agent': 'Mozilla/5.0'})
+    """Fetches detailed LeetCode stats via alfa-leetcode-api proxy to bypass Cloudflare."""
+    username = "ankur_twr"
+    base_url = "https://alfa-leetcode-api.onrender.com"
     
+    def fetch_json(url):
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        try:
+            with urllib.request.urlopen(req, timeout=10) as response:
+                return json.loads(response.read().decode('utf-8'))
+        except Exception:
+            return {}
+
+    # Fetch data from community proxy endpoints
+    profile_data = fetch_json(f"{base_url}/userProfile/{username}")
+    lang_data = fetch_json(f"{base_url}/{username}/language")
+    skill_data = fetch_json(f"{base_url}/skillStats/{username}")
+
     try:
-        with urllib.request.urlopen(req) as response:
-            return json.loads(response.read().decode('utf-8'))
+        ac_submission_num = profile_data.get("matchedUserStats", {}).get("acSubmissionNum", [])
+        
+        # Assemble into the EXACT GraphQL format the frontend expects
+        return {
+            "data": {
+                "matchedUser": {
+                    "submitStats": {
+                        "acSubmissionNum": ac_submission_num
+                    },
+                    "languageProblemCount": lang_data.get("languageProblemCount", []),
+                    "tagProblemCounts": skill_data.get("matchedUser", {}).get("tagProblemCounts", {})
+                }
+            }
+        }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
