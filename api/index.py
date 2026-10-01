@@ -101,4 +101,7 @@ async def health_check():
 # STATIC FILES (serves the portfolio frontend)
 # Must be LAST — catches all unmatched routes
 # ──────────────────────────────────────────────
-app.mount("/", StaticFiles(directory=".", html=True), name="static")
+# In Vercel, the current working directory might not be the root.
+# We explicitly get the absolute path to the root directory (parent of api/).
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+app.mount("/", StaticFiles(directory=ROOT_DIR, html=True), name="static")
